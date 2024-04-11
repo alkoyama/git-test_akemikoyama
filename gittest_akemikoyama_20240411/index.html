@@ -18,13 +18,38 @@
         多分食べるのも好きなせいです。<br>
         学生の頃は学芸員を目指していたので、水族館、動物園、博物館、美術館に詳しい。
     </div>
+</div>
 
+<div class="intro">
+  <div><img src="./IMG/101.jpg" height="auto" width="250"></div>
+  <div><h2>kumata8235-murayama</h2><br>
+      長崎県佐世保市で育った日本人です。<br>
+      趣味は音楽鑑賞。好きな運動はサッカー。<br>
+      もちもちたぷたぷなキャラクターが大好きです。<br>
+      リラックマともちたぷとぽてぽてこぶたが大好き。<br>
+      学生の頃にもっとアニメーションを勉強しておけばよかったなと思う40代です。
+  </div>
 </div>
 
   <h1>コメント投稿フォーム</h1>
   <form method="post" action="process.php">
     <label for="username">Username:</label>
     <input type="text" name="username" id="username" required><br><br>
+    <label for="subject">subject:</label>
+    <select name="subject">
+      <option value="">--Please choose an option--</option>
+      <option value="梅田さん">梅田さん</option>
+      <option value="奥崎さん">奥崎さん</option>
+      <option value="小山明さん">小山明さん</option>
+      <option value="小山由さん">小山由さん</option>
+      <option value="錦さん">錦さん</option>
+      <option value="西口さん">西口さん</option>
+      <option value="西崎さん">西崎さん</option>
+      <option value="平山さん">平山さん</option>
+      <option value="向平さん">向平さん</option>
+      <option value="村山さん">村山さん</option>
+      <option value="和田さん">和田さん</option>
+    </select><br><br>
     <label for="email">Email Address:</label>
     <input type="email" name="email" id="email" required><br><br>
     <label for="comment">Comment:</label>
@@ -32,18 +57,17 @@
     <button type="submit">Submit</button>
   </form>
 
-  <script>
-    // This script needs to be included after the form
-    fetch('process.php', {method: 'post'}) // Replace 'post' with your form method
-        .then(response => response.json())
-        .then(data => {
-            document.querySelector(".messages").innerHTML = data.comments;
-        });
-    </script>
-    
+  <h1>本日いただいたメッセージ</h1>
+  <div class="messages"></div>
 
   <script>
-    // This script will be filled with content from process.php
+    // This script needs to be included after the form
+    fetch('read.php')
+        .then(response => response.json())
+        .then(data => {
+            // Assuming data.comments contains the comments received from the server
+            document.querySelector(".messages").innerHTML = data.comments;
+        });
   </script>
 </body>
 </html>

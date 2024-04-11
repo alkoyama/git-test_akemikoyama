@@ -27,10 +27,12 @@ DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(45) DEFAULT NULL,
+  `subject` varchar(255) DEFAULT NULL,
   `email` varchar(100) DEFAULT NULL,
   `comment` text DEFAULT NULL,
+  `CreatedAt` datetime NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -39,6 +41,7 @@ CREATE TABLE `comments` (
 
 LOCK TABLES `comments` WRITE;
 /*!40000 ALTER TABLE `comments` DISABLE KEYS */;
+INSERT INTO `comments` VALUES (2,'kumata8235','小山明さん','test@gmail.com','Check Regist','2024-04-11 14:14:16'),(3,'kumata8235','小山明さん','test@gmail.com','Check Regist','2024-04-10 14:14:16'),(4,'kuma5656','小山明さん','test@gmail.com','Complete jobs','2024-04-11 14:46:35');
 /*!40000 ALTER TABLE `comments` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-04-11 11:20:10
+-- Dump completed on 2024-04-11 14:52:24

@@ -4,7 +4,8 @@
 if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['comment'])) {
 
   // Collect data from form
-  $username = $_POST['username'];
+  $username_post = $_POST['username'];
+  $subject = $_POST['subject'];
   $email = $_POST['email'];
   $comment = $_POST['comment'];
 
@@ -23,7 +24,7 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['comment
   }
 
   // Insert data into database (replace with your INSERT statement)
-  $sql = "INSERT INTO comments (username, email, comment) VALUES ('$username', '$email', '$comment')";
+  $sql = "INSERT INTO comments (username, subject , email, comment, CreatedAt) VALUES ('$username_post', '$subject' , '$email', '$comment',NOW())";
 
   if (mysqli_query($conn, $sql)) {
     echo "投稿ありがとうございます！";
@@ -34,8 +35,6 @@ if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['comment
   // **New: Retrieve messages from database**
   $sql = "SELECT username, email, comment FROM comments";
   $result = mysqli_query($conn, $sql);
-
-
   
   $comments_html = ''; // Initialize an empty string to hold HTML for comments
   while ($row = $result->fetch_assoc()) { // Loop through each comment row
